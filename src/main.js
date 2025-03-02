@@ -35,7 +35,7 @@ k.scene("main", async () => {
     k.pos(),
     k.scale(scaleFactor),
     {
-      speed: 150,
+      speed: 170,
       direction: "down",
       isInDialogue: false,
     },
@@ -89,25 +89,7 @@ k.scene("main", async () => {
   });
 
   k.onUpdate(() => {
-    let camX = player.worldPos().x;
-    let camY = player.worldPos().y;
-
-    const mapWidth = 720 * scaleFactor;  // 使用新的地圖寬度
-    const mapHeight = 680 * scaleFactor; // 使用新的地圖高度
-    const screenWidth = k.width();
-    const screenHeight = k.height();
-
-    // 計算相機邊界
-    const minX = screenWidth / 2; // 設置最小X為屏幕寬度的一半
-    const maxX = mapWidth - screenWidth / 2; // 設置最大X為地圖寬度減去屏幕寬度的一半
-    const minY = screenHeight / 2;
-    const maxY = mapHeight - screenHeight / 2;
-
-    // 限制相機範圍，避免超出地圖
-    camX = Math.max(minX, Math.min(camX, maxX));
-    camY = Math.max(minY, Math.min(camY, maxY));
-
-    k.camPos(camX, camY);
+    k.camPos(player.worldPos().x, player.worldPos().y - 100);
   });
   
 
